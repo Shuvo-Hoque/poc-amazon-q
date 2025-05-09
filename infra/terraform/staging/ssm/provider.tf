@@ -6,7 +6,14 @@ terraform {
       version = "~> 4.54.0"
     }
   }
+}
+  }
   backend "s3" {
+    bucket  = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    key     = "terraform.tfstate"
+    region  = "ap-southeast-1"
+    encrypt = true
+  }
     bucket  = "staging--poc-shuvo-terraform-state"
 }
   }
