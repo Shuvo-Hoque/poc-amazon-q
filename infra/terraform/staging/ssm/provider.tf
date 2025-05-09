@@ -6,27 +6,15 @@ terraform {
       version = "~> 4.54.0"
     }
   }
-}
-  }
   backend "s3" {
-    bucket  = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    bucket  = "production--poc-shuvo-terraform-state"
     key     = "terraform.tfstate"
-    region  = "ap-southeast-1"
-    encrypt = true
-  }
-    bucket  = "staging--poc-shuvo-terraform-state"
-}
-  }
-  backend "s3" {
-    bucket  = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-    key     = "terraform.tfstate"
-    region  = "ap-southeast-1"
-    encrypt = true
-  }
-    region  = "ap-southeast-1"
+    region  = "ap-south-1"
     encrypt = true
   }
 }
+
+
 provider "aws" {
   region = "ap-southeast-1"
 }
