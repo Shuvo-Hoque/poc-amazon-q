@@ -17,7 +17,36 @@ echo "----------------------------------------------"
 # List SSO profiles if exist
 SSO_PROFILES=$(grep -E '^\[profile ' "$AWS_CONFIG_FILE" 2>/dev/null | sed -E 's/\[profile (.*)\]/\1/')
 
-if [ -n "$SSO_PROFILES" ]; then
+AWS_CRED_FILE="$HOME/.aws/credentials"
+
+echo "----------------------------------------------"
+echo "🔎 AWS Profile Selector for SSM Connection"
+echo "----------------------------------------------"
+
+# List SSO profiles if exist
+SSO_PROFILES=$(grep -E '^\[profile ' "$AWS_CONFIG_FILE" 2>/dev/null | sed -E 's/\[profile (.*)\]/\1/')
+
+if [ -n "${SSO_PROFILES}" ]; then
+    echo "🚀 Available AWS SSO Profiles:"
+    echo ""
+# Embedded Values
+EC2_INSTANCE_ID="i-123456789123455"
+REMOTE_PORT="12345"
+LOCAL_PORT="1234"
+AWS_REGION="ap-southeast-1"
+AWS_CONFIG_FILE="$HOME/.aws/config"
+AWS_CRED_FILE="$HOME/.aws/credentials"
+
+echo "----------------------------------------------"
+echo "🔎 AWS Profile Selector for SSM Connection"
+echo "----------------------------------------------"
+
+# List SSO profiles if exist
+SSO_PROFILES=$(grep -E '^\[profile ' "$AWS_CONFIG_FILE" 2>/dev/null | sed -E 's/\[profile (.*)\]/\1/')
+
+if [ -n "${SSO_PROFILES}" ]; then
+    echo "🚀 Available AWS SSO Profiles:"
+    echo ""
     echo "🚀 Available AWS SSO Profiles:"
     echo ""
 set -e
