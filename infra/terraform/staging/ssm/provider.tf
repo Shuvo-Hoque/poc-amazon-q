@@ -8,7 +8,14 @@ terraform {
   }
   backend "s3" {
     bucket  = "staging--poc-shuvo-terraform-state"
-    key     = "terraform.tfstatestate"
+}
+  }
+  backend "s3" {
+    bucket  = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    key     = "terraform.tfstate"
+    region  = "ap-southeast-1"
+    encrypt = true
+  }
     region  = "ap-southeast-1"
     encrypt = true
   }
