@@ -72,6 +72,19 @@ resource "aws_eks_cluster" "this" {
 
   vpc_config {
     subnet_ids = aws_subnet.eks_subnets[*].id
+    endpoint_public_access = false
+    endpoint_private_access = true
+  }
+
+  depends_on = [aws_iam_role.eks_role]
+}
+
+# Lambda Function
+  name     = "demo-eks"
+  role_arn = aws_iam_role.eks_role.arn
+
+  vpc_config {
+    subnet_ids = aws_subnet.eks_subnets[*].id
   }
 
   depends_on = [aws_iam_role.eks_role]
