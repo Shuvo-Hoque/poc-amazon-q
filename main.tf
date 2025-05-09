@@ -50,7 +50,16 @@ resource "aws_iam_role" "eks_role" {
     }]
   })
 
-  inline_policy {
+}]
+  })
+
+  managed_policy_arns = [
+    "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy",
+    "arn:aws:iam::aws:policy/AmazonEKSVPCResourceController"
+  ]
+}
+
+# EKS Cluster
     name = "eks-inline"
     policy = jsonencode({
       Version = "2012-10-17",
