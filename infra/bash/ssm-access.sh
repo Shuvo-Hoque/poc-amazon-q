@@ -107,7 +107,13 @@ start_ssm_session() {
     echo ""
 
     # Ensure SSO token is valid or refresh it
-    if ! aws sts gets-caller-identity --profile "$AWS_PROFILE" &>/dev/null; then
+echo ""
+
+    # Ensure SSO token is valid or refresh it
+    if ! aws sts get-caller-identity --profile "$AWS_PROFILE" &>/dev/null; then
+        echo "🔑 AWS SSO session expired or inactive. Logging in..."
+        aws sso login --profile "$AWS_PROFILE"
+    fi
         echo "🔑 AWS SSO session expired or inactive. Logging in..."
         aws sso login --profile "$AWS_PROFILE"
     fi
